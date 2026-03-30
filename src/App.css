@@ -114,8 +114,9 @@ input::placeholder {
 }
 
 .hot_seat_view {
-	position: relative;
-  width: 120vmin !important;
+ position: relative;
+  width: 95vmin !important;
+	height: 40vmin !important;
 }
 
 p{
@@ -217,7 +218,7 @@ li{
 .primary_button {
   font-size: 3vmin;
   height: 8vmin;
-  width: 20vmin;
+  width: 30vmin;
 	background: #61dafb;
 	color: #0b131d;
 }
