@@ -156,8 +156,10 @@ function App() {
                 <textarea
                   placeholder="Write your notes here..."
                   value={notepadContent}
+                  maxLength={200}
                   onChange={(e) => setNotepadContent(e.target.value)}
                 ></textarea>
+                <h3 className='notepad_counter'>{notepadContent.length} / 200</h3>
               </div>
             )}
             <div className="phase_timer">{secondsLeft}s</div>
@@ -183,8 +185,10 @@ function App() {
                 <textarea
                   placeholder="Write your notes here..."
                   value={notepadContent}
+                  maxLength={200}
                   onChange={(e) => setNotepadContent(e.target.value)}
                 ></textarea>
+                <h3 className='notepad_counter'>{notepadContent.length} / 200</h3>
               </div>
             )}
           <Voting

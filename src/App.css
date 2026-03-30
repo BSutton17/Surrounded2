@@ -217,7 +217,7 @@ li{
 .start-button,
 .primary_button {
   font-size: 3vmin;
-  height: 8vmin;
+  height: 10vmin;
   width: 30vmin;
 	background: #61dafb;
 	color: #0b131d;
@@ -258,12 +258,23 @@ li{
 	background: rgba(97, 218, 251, 0.35);
 }
 
+textarea {
+	font-size: 4vmin !important;
+}
+
+.notepad_counter{
+ position: absolute;
+  bottom: 0.6vmin;
+  right: 1.2vmin;
+  font-size: 2.5vmin;
+  color: rgba(217, 228, 255, 0.65);
+}
 .notepad_view {
 	position: absolute;
 	top: 7.4vmin;
 	right: 1.6vmin;
-	width: 50vmin;
-	height: 60vmin;
+	width: 58vmin;
+	height: 68vmin;
 	padding: 1vmin;
 	border-radius: 1.2vmin;
 	background: rgba(10, 14, 20, 0.96);
@@ -326,7 +337,7 @@ li{
 .voting_view {
 	height: 90vh;
 	overflow: hidden;
-	margin-botton: 10vmin;
+	margin-bottom: 10vmin;
 }
 
 .voting_view h2 {
@@ -561,7 +572,7 @@ li{
 		left: 1.6vmin;
 		right: 1.6vmin;
 		width: auto;
-		height: 32vmin;
+		height: 40vmin;
 	}
 
 	.notepad_view textarea {
