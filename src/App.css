@@ -237,7 +237,8 @@ li{
 }
 
 .notepad-voting, .notepad_view{
-	margin-top: 10vmin;
+	margin-top: 30vmin;
+	margin-right: 6vmin;
 }
 
 .notepad,
@@ -343,7 +344,7 @@ textarea {
 .voting_view {
 	height: 88vh;
 	overflow: hidden;
-	margin-bottom: -4.5vmin;
+	margin-bottom: -5.5vmin;
 }
 
 .voting_view h2 {
@@ -363,6 +364,7 @@ textarea {
 	padding: 1vmin;
 	background: rgba(255, 255, 255, 0.05);
 	min-height: 0;
+	max-width: 85.5vmin;
 }
 
 .voting_rules_column{
@@ -374,7 +376,6 @@ textarea {
 	margin: 0;
 	padding: 0;
 	display: flex;
-	gap: -10vmin;
 	max-height: 100%;
 	overflow: auto;
 }
@@ -386,7 +387,7 @@ textarea {
 	padding: 0.7vmin 0.9vmin;
 	cursor: grab;
 	font-size: 2.6vmin;
-  width: 20vmin;
+  	width: 20vmin;
 }
 
 .selected_player {

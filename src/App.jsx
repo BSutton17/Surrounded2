@@ -9,6 +9,19 @@ import Leaderboard from "./Components/Leaderboard";
 import Podium from "./Components/Podium";
 import { PiNotepadBold } from "react-icons/pi";
 
+const ENABLE_MOCK_VOTING = true;
+
+const MOCK_VOTING_RULES = [
+  "Always mention an animal in your response",
+  "Your answer must contain a number",
+  "Say the word honestly at least once",
+  "Mention a city in your answer",
+  "Include the name of a day of the week",
+  "Your answer must include a reference to the weather"
+];
+
+const MOCK_VOTING_PLAYERS = ["You", "Alex", "Maya", "Jordan", "Chris", "Sam"];
+
 function useCountdown(endsAt) {
   const [secondsLeft, setSecondsLeft] = useState(0);
 
@@ -48,6 +61,28 @@ function App() {
   // Remove local showNotepad, use context
 
   useEffect(() => {
+    if (ENABLE_MOCK_VOTING) {
+      const selfName = name || "You";
+      const normalizedPlayers = [
+        selfName,
+        ...MOCK_VOTING_PLAYERS.filter((playerName) => playerName !== selfName)
+      ];
+
+      setPlayers(normalizedPlayers.map((playerName) => ({ name: playerName })));
+      setDisplayGame(true);
+      setPhase("voting");
+      setPotentialRules(MOCK_VOTING_RULES);
+      setRoundNumber(3);
+      setTotalRounds(5);
+      setPhaseEndsAt(Date.now() + 120000);
+      setScores({ Alex: 2, Maya: 1.5, Jordan: 1, Chris: 0.5, Sam: 0, [selfName]: 1 });
+      setMyRule("Give the opposite of your real answer");
+      setHotSeat("Alex");
+      setRevealAssignments([]);
+      setHasSubmittedVotes(false);
+      return;
+    }
+
     socket.on("updatePlayerList", (playerList) => {
       setPlayers([...playerList]);
     });
@@ -124,6 +159,12 @@ function App() {
     if (hasSubmittedVotes) {
       return;
     }
+
+    if (ENABLE_MOCK_VOTING) {
+      setHasSubmittedVotes(true);
+      return;
+    }
+
     socket.emit("submit_votes", room, assignments);
     setHasSubmittedVotes(true);
   };
