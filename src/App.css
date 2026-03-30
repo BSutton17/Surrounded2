@@ -1,0 +1,492 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	color: #f4f8ff;
+	background:
+		radial-gradient(circle at 12% 8%, rgba(97, 218, 251, 0.2) 0, rgba(97, 218, 251, 0) 40%),
+		radial-gradient(circle at 80% 95%, rgba(97, 218, 251, 0.17) 0, rgba(97, 218, 251, 0) 35%),
+		#1f242e;
+    overflow: hidden;
+}
+
+#root {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2.4vmin 1.6vmin;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin-top: 0;
+}
+
+button {
+	background: #61dafb;
+	color: #0f1720;
+	font-size: 1.9vmin;
+	font-weight: 700;
+	padding: 1vmin 1.6vmin;
+	border: none;
+	border-radius: 1vmin;
+	cursor: pointer;
+	transition: transform 0.18s ease, background 0.2s ease;
+}
+
+.two{
+  position: absolute;
+	top: 44vmin;
+  left: 50%;
+	transform: translateX(-50%);
+	font-size: 60vmin;
+	line-height: 1;
+	font-weight: 800;
+	color: rgba(97, 218, 251, 0.22);
+	text-shadow: 0 0 1.6vmin rgba(97, 218, 251, 0.35);
+	pointer-events: none;
+	user-select: none;
+	z-index: 0;
+  -webkit-text-stroke: 0.42vmin rgba(255, 255, 255, 0.18);
+}
+
+button:hover {
+	transform: translateY(-0.1vmin);
+	background: #4fb7d7;
+}
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+input {
+	width: 100%;
+	background: rgba(255, 255, 255, 0.08);
+	border: 0.12vmin solid rgba(97, 218, 251, 0.45);
+	color: #f8fbff;
+	border-radius: 1vmin;
+	padding: 1vmin 1.2vmin;
+	outline: none;
+}
+
+input::placeholder {
+	color: rgba(232, 239, 255, 0.78);
+}
+
+.case,
+.waiting_room,
+.buffer_view,
+.voting_view,
+.reveal_view,
+.leaderboard_view,
+.podium_view{
+	width: 90vmin;
+  height: 100vmin;
+}
+
+.case,
+.waiting_room,
+.buffer_view,
+.hot_seat_view,
+.voting_view,
+.reveal_view,
+.leaderboard_view,
+.podium_view {
+	border-radius: 1.8vmin;
+	border: 0.12vmin solid rgba(255, 255, 255, 0.18);
+	background: rgba(10, 13, 18, 0.8);
+	backdrop-filter: blur(0.6vmin);
+	box-shadow: 0 1.8vmin 4vmin rgba(0, 0, 0, 0.42);
+	padding: 2.2vmin;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+p{
+  font-size: 4vmin !important;
+}
+
+li{
+  font-size: 3.7vmin;
+  margin-left: 3vmin;
+}
+
+.potential-rules{
+  margin-top: 3vmin;
+  margin-bottom: -0.5vmin;
+}
+
+.buffer_view{
+  width: 90vmin;
+  height: 135vmin;
+}
+
+.case {
+	text-align: center;
+	padding-top: 3.2vmin;
+}
+
+#title {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 15.6vmin;
+	font-size: clamp(10vmin, 12vmin, 14vmin);
+	letter-spacing: 0.12vmin;
+	color: #f7fbff;
+	z-index: 1;
+}
+
+#title::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 50vmin;
+	height: 50vmin;
+	border-radius: 50%;
+	border: 0.28vmin dashed rgba(97, 218, 251, 0.95);
+	box-shadow: 0 0 2.8vmin rgba(97, 218, 251, 0.45), inset 0 0 2vmin rgba(97, 218, 251, 0.2);
+	background: radial-gradient(circle, rgba(97, 218, 251, 0.12) 0%, rgba(97, 218, 251, 0.02) 55%, rgba(97, 218, 251, 0) 100%);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+#title::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 35vmin;
+	height: 35vmin;
+	border-radius: 50%;
+	border: 0.2vmin solid rgba(244, 248, 255, 0.75);
+	box-shadow: 0 0 1.4vmin rgba(244, 248, 255, 0.22);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+.name_input {
+	width: 55vmin;
+	margin: 0 auto;
+	display: grid;
+	gap: 1.2vmin;
+}
+
+.name_input button {
+	width: 100%;
+}
+
+.waiting_room {
+	text-align: center;
+	align-items: center;
+}
+
+.waiting_room ul {
+	list-style: none;
+	margin: 1.8vmin auto;
+	padding: 0;
+	width: min(48vmin, 100%);
+	display: grid;
+	gap: 0.8vmin;
+}
+
+.playerList {
+	background: rgba(255, 255, 255, 0.1);
+	border: 0.12vmin solid rgba(255, 255, 255, 0.2);
+	border-radius: 1vmin;
+	padding: 1vmin 1.2vmin;
+}
+
+.start-button,
+.primary_button {
+  font-size: 3vmin;
+  height: 8vmin;
+  width: 20vmin;
+	background: #61dafb;
+	color: #0b131d;
+}
+
+.phase_timer {
+	width: fit-content;
+	min-width: 7.4vmin;
+	text-align: center;
+	font-size: 2.2vmin;
+	font-weight: 800;
+	border-radius: 99vmin;
+	padding: 0.7vmin 1.4vmin;
+	margin-bottom: 1.2vmin;
+	background: #61dafb;
+	color: #0f1720;
+}
+
+.my_rule_card {
+	margin-top: 1.2vmin;
+	background: rgba(97, 218, 251, 0.12);
+	border: 0.12vmin solid rgba(97, 218, 251, 0.5);
+	border-radius: 1.2vmin;
+	padding: 1.4vmin;
+}
+
+.my_rule_card h3 {
+	margin-bottom: 0.8vmin;
+}
+
+.my_rule_card p {
+	margin: 0;
+	font-size: 2vmin;
+	line-height: 1.4;
+}
+
+.buffer_rules,
+.leaderboard_list {
+	margin: 1vmin 0 0;
+	padding-left: 2.2vmin;
+	display: grid;
+	gap: 0.8vmin;
+}
+
+.voting_grid {
+	margin-top: 1vmin;
+	display: grid;
+	grid-template-columns: 24vmin 1fr;
+	gap: 1vmin;
+}
+
+.voting_view {
+	height: 88vh;
+	overflow: hidden;
+}
+
+.voting_view h2 {
+	margin-bottom: 0.6vmin;
+}
+
+.voting_view p {
+	margin-bottom: 0;
+	font-size: 1.7vmin;
+	opacity: 0.92;
+}
+
+.voting_players_column,
+.voting_rules_column {
+	border: 0.12vmin solid rgba(255, 255, 255, 0.22);
+	border-radius: 1.2vmin;
+	padding: 1vmin;
+	background: rgba(255, 255, 255, 0.05);
+	min-height: 0;
+}
+
+.voting_rules_column{
+  height: 110vmin;
+}
+
+.player_pool {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: -10vmin;
+	max-height: 100%;
+	overflow: auto;
+}
+
+.draggable_player {
+	border: 0.12vmin solid rgba(97, 218, 251, 0.35);
+	background: rgba(7, 11, 18, 0.66);
+	border-radius: 0.9vmin;
+	padding: 0.7vmin 0.9vmin;
+	cursor: grab;
+	font-size: 2.6vmin;
+  width: 20vmin;
+}
+
+.selected_player {
+	border-color: #61dafb;
+	background: rgba(97, 218, 251, 0.2);
+	box-shadow: 0 0 0 0.2vmin rgba(97, 218, 251, 0.35);
+}
+
+.rules_drop_list {
+	display: grid;
+	gap: 0.6vmin;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	max-height: 100%;
+	overflow: auto;
+}
+
+.rule_drop_row {
+	border: 0.12vmin dashed rgba(97, 218, 251, 0.5);
+	border-radius: 1vmin;
+	padding: 0.7vmin;
+	background: rgba(7, 11, 18, 0.6);
+	display: grid;
+	gap: 0.6vmin;
+}
+
+.rule_drop_target {
+	cursor: pointer;
+	border-color: rgba(97, 218, 251, 0.9);
+}
+
+.rule_text {
+	line-height: 1.25;
+	font-size: 3.5vmin;
+}
+
+.assigned_name {
+	width: 100%;
+	text-align: left;
+	background: rgba(255, 255, 255, 0.12);
+	color: #f4f8ff;
+	border: 0.12vmin solid rgba(255, 255, 255, 0.25);
+	font-size: 2.4vmin;
+	padding: 0.6vmin 0.8vmin;
+}
+
+.assigned_name:disabled {
+	opacity: 1;
+	cursor: default;
+}
+
+.reveal_list {
+	display: grid;
+	gap: 1vmin;
+}
+
+.reveal_row,
+.leaderboard_row {
+	display: grid;
+	align-items: center;
+	gap: 0.8vmin;
+	border: 0.12vmin solid rgba(255, 255, 255, 0.2);
+	border-radius: 1vmin;
+	padding: 1vmin 1.2vmin;
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.reveal_row {
+	grid-template-columns: 22vmin 1fr;
+}
+
+.leaderboard_row {
+	grid-template-columns: 1fr auto;
+}
+
+.podium_view {
+	text-align: center;
+	align-items: center;
+}
+
+.podium_grid {
+	margin-top: 1.6vmin;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.2vmin;
+	width: 100%;
+}
+
+.podium_card {
+	border-radius: 1.4vmin;
+	padding: 1.4vmin;
+	border: 0.12vmin solid rgba(255, 255, 255, 0.25);
+}
+
+.podium_1 {
+	background: linear-gradient(180deg, rgba(255, 242, 168, 0.85), rgba(255, 213, 92, 0.65));
+	color: #1d1300;
+}
+
+.podium_2 {
+	background: linear-gradient(180deg, rgba(227, 232, 241, 0.92), rgba(193, 205, 222, 0.75));
+	color: #101521;
+}
+
+.podium_3 {
+	background: linear-gradient(180deg, rgba(246, 207, 180, 0.92), rgba(221, 156, 113, 0.74));
+	color: #1d0e05;
+}
+
+.podium_place {
+	font-size: 5.1vmin;
+	font-weight: 800;
+}
+
+.podium_name {
+	margin-top: 0.6vmin;
+	font-weight: 700;
+}
+
+.podium_points {
+	margin-top: 0.4vmin;
+}
+
+@media (max-width: 105vmin) {
+	#root {
+		justify-content: center;
+		align-items: center;
+		padding: 1.2vmin;
+	}
+
+	.voting_grid {
+		grid-template-columns: 1fr;
+	}
+
+	.reveal_row {
+		grid-template-columns: 1fr;
+	}
+
+	.podium_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 82vmin) {
+	#root {
+		justify-content: center;
+		align-items: center;
+		padding: 1vmin;
+	}
+
+	.voting_view {
+		height: auto;
+		max-height: none;
+	}
+
+	.voting_grid {
+		grid-template-columns: 1fr;
+		gap: 0.8vmin;
+	}
+
+	.voting_players_column,
+	.voting_rules_column {
+		padding: 0.9vmin;
+	}
+
+	.player_pool {
+		max-height: 17vmin;
+	}
+
+	.rules_drop_list {
+		grid-template-columns: 1fr;
+		max-height: 40vh;
+	}
+
+	.rule_text {
+		font-size: 1.8vmin;
+	}
+
+	.assigned_name {
+		font-size: 1.7vmin;
+	}
+}
