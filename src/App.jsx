@@ -7,6 +7,7 @@ import Voting from "./Components/Voting";
 import Reveal from "./Components/Reveal";
 import Leaderboard from "./Components/Leaderboard";
 import Podium from "./Components/Podium";
+import { PiNotepadBold } from "react-icons/pi";
 
 function useCountdown(endsAt) {
   const [secondsLeft, setSecondsLeft] = useState(0);
@@ -44,6 +45,7 @@ function App() {
   const [phaseEndsAt, setPhaseEndsAt] = useState(0);
   const { socket, name, room, isAdmin, players, setPlayers } = useGameContext();
   const secondsLeft = useCountdown(phaseEndsAt);
+  const [showNotepad, setShowNotepad] = useState(false);
 
   useEffect(() => {
     socket.on("updatePlayerList", (playerList) => {
@@ -146,6 +148,14 @@ function App() {
           />
         ) : phase === "hotseat" ? (
           <div className="hot_seat_view">
+            <button className="notepad" onClick={() => setShowNotepad(!showNotepad)}>
+              <PiNotepadBold />
+            </button>
+            {showNotepad && (
+              <div className="notepad_view">
+                <textarea placeholder="Write your notes here..."></textarea>
+              </div>
+            )}
             <div className="phase_timer">{secondsLeft}s</div>
             <p>Round {roundNumber}/{totalRounds}</p>
             <h2>Hot Seat: {hotSeat || "Waiting..."}</h2>
