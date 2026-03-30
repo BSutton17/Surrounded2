@@ -337,7 +337,7 @@ textarea {
 .voting_view {
 	height: 90vh;
 	overflow: hidden;
-	margin-bottom: 5vmin;
+	margin-bottom: 1vmin;
 }
 
 .voting_view h2 {
