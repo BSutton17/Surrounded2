@@ -236,7 +236,12 @@ li{
 	color: #0f1720;
 }
 
-.notepad {
+.notepad-voting, .notepad_view{
+	margin-top: 10vmin;
+}
+
+.notepad,
+.notepad-voting {
 	position: absolute;
 	top: 1.6vmin;
 	right: 1.6vmin;
@@ -254,7 +259,8 @@ li{
 	border: 0.12vmin solid rgba(97, 218, 251, 0.8);
 }
 
-.notepad:hover {
+.notepad:hover,
+.notepad-voting:hover {
 	background: rgba(97, 218, 251, 0.35);
 }
 
@@ -337,7 +343,7 @@ textarea {
 .voting_view {
 	height: 88vh;
 	overflow: hidden;
-	margin-bottom: -1vmin;
+	margin-bottom: -5vmin;
 }
 
 .voting_view h2 {
@@ -562,7 +568,8 @@ textarea {
 		font-size: 1.7vmin;
 	}
 
-	.notepad {
+	.notepad,
+	.notepad-voting {
 		width: 6.6vmin;
 		height: 6.6vmin;
 		font-size: 3.2vmin;

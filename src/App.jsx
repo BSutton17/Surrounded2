@@ -177,7 +177,7 @@ function App() {
           </div>
         ) : phase === "voting" ? (
           <>
-          <button className="notepad" onClick={() => setNotepadOpen(!notepadOpen)}>
+          <button className="notepad-voting" onClick={() => setNotepadOpen(!notepadOpen)}>
               <PiNotepadBold />
             </button>
             {notepadOpen && (
