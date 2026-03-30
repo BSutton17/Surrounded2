@@ -116,7 +116,7 @@ input::placeholder {
 .hot_seat_view {
  position: relative;
   width: 95vmin !important;
-	height: 40vmin !important;
+	height: 60vmin !important;
 }
 
 p{
@@ -324,8 +324,9 @@ li{
 }
 
 .voting_view {
-	height: 88vh;
+	height: 90vh;
 	overflow: hidden;
+	margin-botton: 10vmin;
 }
 
 .voting_view h2 {
