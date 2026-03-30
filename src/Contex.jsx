@@ -8,6 +8,10 @@ export const useGameContext = () => {
   return useContext(GameContext);
 };
 
+const getNotepadStorageKey = (roomId, playerName) => {
+  return `surrounded2:notepad:${roomId.trim().toLowerCase()}:${playerName.trim().toLowerCase()}`;
+};
+
 export const GameProvider = ({ children }) => {
 
   const [room, setRoom] = useState('');
@@ -15,6 +19,26 @@ export const GameProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [players, setPlayers] = useState([]);
   const [socket] = useState(() => io(SERVER_URL));
+  const [notepadContent, setNotepadContent] = useState('');
+  const [notepadOpen, setNotepadOpen] = useState(false); // track open state
+
+
+  // Load notes from storage every time notepad is opened
+  useEffect(() => {
+    if (notepadOpen && room && name) {
+      const storageKey = getNotepadStorageKey(room, name);
+      const savedNotes = localStorage.getItem(storageKey);
+      setNotepadContent(savedNotes || '');
+      console.log('[Notepad] Loaded from storage:', savedNotes);
+    }
+  }, [notepadOpen, room, name]);
+
+  useEffect(() => {
+    if (!room || !name) return;
+    const storageKey = getNotepadStorageKey(room, name);
+    localStorage.setItem(storageKey, notepadContent);
+    console.log('[Notepad] Saved to storage:', notepadContent);
+  }, [room, name, notepadContent]);
 
   useEffect(() => {
     const onConnect = () => {
@@ -43,6 +67,8 @@ export const GameProvider = ({ children }) => {
         name, setName,
         isAdmin, setIsAdmin,
         players, setPlayers,
+        notepadContent, setNotepadContent,
+        notepadOpen, setNotepadOpen,
         logout
       }}
     >

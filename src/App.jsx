@@ -43,9 +43,9 @@ function App() {
   const [totalRounds, setTotalRounds] = useState(5);
   const [hasSubmittedVotes, setHasSubmittedVotes] = useState(false);
   const [phaseEndsAt, setPhaseEndsAt] = useState(0);
-  const { socket, name, room, isAdmin, players, setPlayers } = useGameContext();
+  const { socket, name, room, isAdmin, players, setPlayers, notepadContent, setNotepadContent, notepadOpen, setNotepadOpen } = useGameContext();
   const secondsLeft = useCountdown(phaseEndsAt);
-  const [showNotepad, setShowNotepad] = useState(false);
+  // Remove local showNotepad, use context
 
   useEffect(() => {
     socket.on("updatePlayerList", (playerList) => {
@@ -148,12 +148,16 @@ function App() {
           />
         ) : phase === "hotseat" ? (
           <div className="hot_seat_view">
-            <button className="notepad" onClick={() => setShowNotepad(!showNotepad)}>
+            <button className="notepad" onClick={() => setNotepadOpen(!notepadOpen)}>
               <PiNotepadBold />
             </button>
-            {showNotepad && (
+            {notepadOpen && (
               <div className="notepad_view">
-                <textarea placeholder="Write your notes here..."></textarea>
+                <textarea
+                  placeholder="Write your notes here..."
+                  value={notepadContent}
+                  onChange={(e) => setNotepadContent(e.target.value)}
+                ></textarea>
               </div>
             )}
             <div className="phase_timer">{secondsLeft}s</div>
@@ -170,6 +174,19 @@ function App() {
             )}
           </div>
         ) : phase === "voting" ? (
+          <>
+          <button className="notepad" onClick={() => setNotepadOpen(!notepadOpen)}>
+              <PiNotepadBold />
+            </button>
+            {notepadOpen && (
+              <div className="notepad_view">
+                <textarea
+                  placeholder="Write your notes here..."
+                  value={notepadContent}
+                  onChange={(e) => setNotepadContent(e.target.value)}
+                ></textarea>
+              </div>
+            )}
           <Voting
             rules={potentialRules}
             players={playerNames}
@@ -178,6 +195,7 @@ function App() {
             onSubmit={submitVotes}
             hasSubmitted={hasSubmittedVotes}
           />
+          </>
         ) : phase === "reveal" ? (
           <Reveal assignments={revealAssignments} secondsLeft={secondsLeft} />
         ) : phase === "leaderboard" ? (
