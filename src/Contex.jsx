@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 const GameContext = createContext();
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+const SERVER_URL = 'https://surroundedtwo-a4ca20ef21f0.herokuapp.com' || 'http://localhost:3001';
 
 export const useGameContext = () => {
   return useContext(GameContext);
